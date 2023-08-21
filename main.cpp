@@ -39,89 +39,89 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    /*int option = 0;
+    int option = 0;
     bool number_at_beginning = false;
     char* base_name = nullptr;
     unsigned int start_index = 1;
     unsigned int increment = 1;
     unsigned int number_of_digits = 3;
 
-    while((option = getopt(argc, argv, "fb:s:i:d:")) != -1)
-    {
-        switch(option)
-        {
-            case 'f':
-                number_at_beginning = true;
-                break;
-            case 'b':
-                base_name = optarg;
-                break;
-            case 's':
-                start_index = atoi(optarg);
-                break;
-            case 'i':
-                increment = atoi(optarg);
-                break;
-            case 'd':
-                number_of_digits = atoi(optarg);
-                break;
-            default:
-                helpusage();
-                return 1;
-                break;
-        }
-    }
+    //while((option = getopt(argc, argv, "fb:s:i:d:")) != -1)
+    //{
+    //    switch(option)
+    //    {
+    //        case 'f':
+    //            number_at_beginning = true;
+    //            break;
+    //        case 'b':
+    //            base_name = optarg;
+    //            break;
+    //        case 's':
+    //            start_index = atoi(optarg);
+    //            break;
+    //        case 'i':
+    //            increment = atoi(optarg);
+    //            break;
+    //        case 'd':
+    //            number_of_digits = atoi(optarg);
+    //            break;
+    //        default:
+    //            helpusage();
+    //            return 1;
+    //            break;
+    //    }
+    //}
 
-    char dir[255];
-    if(base_name == nullptr)
-    {
-        getcwd(dir, 255);
-        base_name = strrchr(dir, '\\') + 1;
-    }
+    //char dir[255];
+    //if(base_name == nullptr)
+    //{
+    //    getcwd(dir, 255);
+    //    base_name = strrchr(dir, '\\') + 1;
+    //}
 
-    unsigned int file_count = argc - optind;
-    char files[file_count][255] = {'\0'};
-    char new_files[file_count][255] = {'\0'};
+    //unsigned int file_count = argc - optind;
+    //char files[file_count][255] = {'\0'};
+    //char new_files[file_count][255] = {'\0'};
 
-    for(int i = optind; i < argc; ++i)
-    {
-        if(strlen(argv[i]) > 255)
-        {
-            cout << "Filename too long (over 255)" << endl;
-            cout << argv[i] << endl;
-            return 1;
-        }
+    //for(int i = optind; i < argc; ++i)
+    //{
+    //    if(strlen(argv[i]) > 255)
+    //    {
+    //        cout << "Filename too long (over 255)" << endl;
+    //        cout << argv[i] << endl;
+    //        return 1;
+    //    }
 
-        strcpy(files[i - optind], argv[i]);
-    }
+    //    strcpy(files[i - optind], argv[i]);
+    //}
 
-    char format[6] = {'\0'};
-    sprintf(format, "%%0%dd", number_of_digits);
-    char number[number_of_digits + 1] = {'\0'};
+    //char format[6] = {'\0'};
+    //sprintf(format, "%%0%dd", number_of_digits);
+    //char number[number_of_digits + 1] = {'\0'};
 
-    for(unsigned int i = 0; i < file_count; ++i)
-    {
-        char* dot = strrchr(files[i], '.');
-        memset(number, '0', number_of_digits);
-        sprintf(number, format, start_index + i * increment);
+    //for(unsigned int i = 0; i < file_count; ++i)
+    //{
+    //    char* dot = strrchr(files[i], '.');
+    //    memset(number, '0', number_of_digits);
+    //    sprintf(number, format, start_index + i * increment);
 
-        if(!number_at_beginning)
-            sprintf(new_files[i], "%s-%s%s", base_name, number, dot);
-        else
-            sprintf(new_files[i], "%s-%s%s", number, base_name, dot);
+    //    if(!number_at_beginning)
+    //        sprintf(new_files[i], "%s-%s%s", base_name, number, dot);
+    //    else
+    //        sprintf(new_files[i], "%s-%s%s", number, base_name, dot);
 
-        char* current_char = new_files[i];
-        while(*current_char != '\0')
-        {
-            if(*current_char == ' ')
-                *current_char = '_';
-            ++current_char;
-        }
+    //    char* current_char = new_files[i];
+    //    while(*current_char != '\0')
+    //    {
+    //        if(*current_char == ' ')
+    //            *current_char = '_';
+    //        ++current_char;
+    //    }
 
-        rename(files[i], new_files[i]);
+    //    rename(files[i], new_files[i]);
 
-        cout << files[i] << " -> " << new_files[i] << endl;
-    }
+    //    cout << files[i] << " -> " << new_files[i] << endl;
+    //}
 
     return 0;*/
 }
