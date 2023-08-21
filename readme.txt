@@ -1,51 +1,18 @@
 batch_rename
 ------------
 
-Make files like 01-music.flac 02-music.flac etc.
-	batch_rename -o fb -s - -fs 1 -fd 2 -b music *.flac
+Use Case 1:
+	Rename picture files
+	batch_rename -f "/d-/n1" -n1 001 /e "jpg" *.jpeg
 
-make file like Video-S01E02.avi
-	batch_rename -o b
+Use Case 2:
+	Rename music files - do this after determining how to say "reuse the base name of the file"
 
+Use Case 3:
+	Rename video files make file like Video-S01E02.avi
+	batch_rename -f "/d-S01E/n1" -n1 01 *.mkv
 
+replace_char
+replace_string
 
-
-
-
-
-file				fi
-file_start			fis
-file_digits			fid
-
-file_aux			fia
-file_aux_start		fias
-file_aux_digits		fiad
-
-disc				di
-disc_start			dis
-disc_digits			did
-
-season_index				si
-season_index_start			sis
-season_index_digits			sid
-
-episode_index				ei
-episode_index_start			eis
-episode_index_digits		eid
-
-base_name_1					bn1
-base_name_2
-base_name_n
-
-attribute_1					a1
-attribute_2
-attribute_n
-
-replace_chars				rc
-replace_chars_with			rcw
-
-make_space					ms
-
-order_of_elements			ord
-
-separator					s
+insert_chars
