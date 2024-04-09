@@ -1,41 +1,40 @@
 //#include <unistd.h>
 #include <iostream>
-#include <cstdlib>
+#include <boost/program_options.hpp>
+
+namespace po = boost::program_options;
 
 using namespace std;
 
-void helpusage()
-{
-    cout << "Usage: batch_rename [options] FilesToRename..." << endl;
-    cout << "Options:" << endl;
-    cout << "-f" << endl;
-    cout << "    Place number at beginning of file name instead of end" << endl;
-    cout << "     e.g. \"01-File.gz\" instead of \"File-01.gz\"\n" << endl;
-    cout << "-b BASENAME" << endl;
-    cout << "    The basename of the new files (the name without the numbers)" << endl;
-    cout << "    The default is the name of the directory in which the files are found\n" << endl;
-    cout << "-s START_INDEX" << endl;
-    cout << "    The first number to use when naming the new files\n" << endl;
-    cout << "-i INCREMENT" << endl;
-    cout << "    The amount the number increases between each new file name\n" << endl;
-    cout << "-d DIGITS" << endl;
-    cout << "    The number of digits in each filename number.  0s are used to pad to this number." << endl;
-    cout << "     e.g. If digits is set to 3 and the filename number is 1 then the file will be File-001.gz\n" << endl;
-    cout << "Examples:" << endl;
-    cout << "-Rename all files in the current directory \"./thisDirectory\" to thisDirectory-01.ext thisDirectory-02.ext" << endl;
-    cout << "  where ext is the file extension the file had before the renaming" << endl;
-    cout << "$ batchrename *\n" << endl;
-    cout << "-Rename all jpegs to Picture-01.jpg, Picture-02.jpg, etc." << endl;
-    cout << "$ batchrename -b \"Picture-\" *.jpg\n" << endl;
-    cout << "-Rename all mp3 files in the current directory to Music-010.mp3, Music-020.mp3, etc." << endl;
-    cout << "$ batchrename -b \"Music-\" -s 10 -i 10 -d 3 *.mp3" << endl;
-}
-
 int main(int argc, char* argv[])
 {
-    if(argc < 2)
+    po::options_description desc("Allowed options");
+    
+    // Bind variables for program options
+    int n0 = 0;
+
+    try
     {
-        helpusage();
+        // Declare supported options
+        desc.add_options()
+            ("first_counter,n0",
+                po::value<int>(&n0)->default_value(10),
+                "set the first counter to a starting value. Use leading zeros for padding.")
+            ;
+
+        // Store the options in a variables_map
+        po::variables_map vm;
+        po::store(po::parse_command_line(argc, argv, desc), vm);
+        po::notify(vm);
+
+        // Option with a bind variable and default value
+        if (vm.count("int_bind_default_val"))
+            cout << "int_bind_default_val was set to " << bind_int_val << endl;
+    }
+    catch (exception& e)
+    {
+        cout << e.what() << endl;
+        cout << desc << endl;
         return 1;
     }
 
@@ -126,3 +125,29 @@ int main(int argc, char* argv[])
     return 0;*/
 }
 
+//void helpusage()
+//{
+//    cout << "Usage: batch_rename [options] FilesToRename..." << endl;
+//    cout << "Options:" << endl;
+//    cout << "-f" << endl;
+//    cout << "    Place number at beginning of file name instead of end" << endl;
+//    cout << "     e.g. \"01-File.gz\" instead of \"File-01.gz\"\n" << endl;
+//    cout << "-b BASENAME" << endl;
+//    cout << "    The basename of the new files (the name without the numbers)" << endl;
+//    cout << "    The default is the name of the directory in which the files are found\n" << endl;
+//    cout << "-s START_INDEX" << endl;
+//    cout << "    The first number to use when naming the new files\n" << endl;
+//    cout << "-i INCREMENT" << endl;
+//    cout << "    The amount the number increases between each new file name\n" << endl;
+//    cout << "-d DIGITS" << endl;
+//    cout << "    The number of digits in each filename number.  0s are used to pad to this number." << endl;
+//    cout << "     e.g. If digits is set to 3 and the filename number is 1 then the file will be File-001.gz\n" << endl;
+//    cout << "Examples:" << endl;
+//    cout << "-Rename all files in the current directory \"./thisDirectory\" to thisDirectory-01.ext thisDirectory-02.ext" << endl;
+//    cout << "  where ext is the file extension the file had before the renaming" << endl;
+//    cout << "$ batchrename *\n" << endl;
+//    cout << "-Rename all jpegs to Picture-01.jpg, Picture-02.jpg, etc." << endl;
+//    cout << "$ batchrename -b \"Picture-\" *.jpg\n" << endl;
+//    cout << "-Rename all mp3 files in the current directory to Music-010.mp3, Music-020.mp3, etc." << endl;
+//    cout << "$ batchrename -b \"Music-\" -s 10 -i 10 -d 3 *.mp3" << endl;
+//}
