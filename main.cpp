@@ -28,8 +28,8 @@ int main(int argc, char* argv[])
         po::notify(vm);
 
         // Option with a bind variable and default value
-        if (vm.count("int_bind_default_val"))
-            cout << "int_bind_default_val was set to " << bind_int_val << endl;
+        if (vm.count("first_counter"))
+            cout << "first_counter was set to " << n0 << endl;
     }
     catch (exception& e)
     {
@@ -38,12 +38,12 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    int option = 0;
-    bool number_at_beginning = false;
-    char* base_name = nullptr;
-    unsigned int start_index = 1;
-    unsigned int increment = 1;
-    unsigned int number_of_digits = 3;
+    //int option = 0;
+    //bool number_at_beginning = false;
+    //char* base_name = nullptr;
+    //unsigned int start_index = 1;
+    //unsigned int increment = 1;
+    //unsigned int number_of_digits = 3;
 
     //while((option = getopt(argc, argv, "fb:s:i:d:")) != -1)
     //{
@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
     //    cout << files[i] << " -> " << new_files[i] << endl;
     //}
 
-    return 0;*/
+    return 0;
 }
 
 //void helpusage()
